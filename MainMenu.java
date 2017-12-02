@@ -95,7 +95,6 @@ public class MainMenu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Cod frame = new Cod();
-
             }
         });
 
