@@ -88,7 +88,19 @@ public class MainMenu extends JFrame {
                 }
             }
         });
+
+        JButton cod = new JButton("Кодировка");
+
+        cod.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Cod frame = new Cod();
+
+            }
+        });
+
         panelButton.add(button);
+        panelButton.add(cod);
         res.add(panelButton, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
 
         frame.setVisible(true);
