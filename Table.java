@@ -22,12 +22,12 @@ public class Table extends JFrame {
         table.repaint();
         Box content = new Box(BoxLayout.Y_AXIS);
         JPanel panel = new JPanel();
-        float[][] f = new float [numR][numC];
+        float[][] f = new float[numR][numC];
         JButton button = new JButton("ok");
-        float [][]matrix = new float[][]{
-                {-1,0,1},
-                {-2,0,2},
-                {-1,0,1}
+        float[][] matrix = new float[][]{
+                {-1, 0, 1},
+                {-2, 0, 2},
+                {-1, 0, 1}
         };
         button.addActionListener(new ActionListener() {
             @Override
@@ -39,7 +39,6 @@ public class Table extends JFrame {
                         System.out.println(f[k][l]);
                     }
                 }
-
 
 
                 BufferedImage image = null;
