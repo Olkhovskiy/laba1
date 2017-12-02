@@ -22,18 +22,25 @@ public class Table extends JFrame {
         table.repaint();
         Box content = new Box(BoxLayout.Y_AXIS);
         JPanel panel = new JPanel();
-        int[][] f = new int[numR][numC];
+        float[][] f = new float [numR][numC];
         JButton button = new JButton("ok");
+        float [][]matrix = new float[][]{
+                {-1,0,1},
+                {-2,0,2},
+                {-1,0,1}
+        };
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (int k = 0; k < numR; k++) {
                     for (int l = 0; l < numC; l++) {
                         System.out.println(k + " " + l + " " + numC + " " + numR);
-                        f[k][l] = Integer.valueOf(table.getModel().getValueAt(k, l).toString());
+                        f[k][l] = Float.valueOf(table.getModel().getValueAt(k, l).toString());
                         System.out.println(f[k][l]);
                     }
                 }
+
+
 
                 BufferedImage image = null;
                 try {
@@ -57,7 +64,7 @@ public class Table extends JFrame {
     }
 
 
-    public static void matric(BufferedImage image, int[][] f, int numR, int numC, int i, int j) throws IOException {
+    public static void matric(BufferedImage image, float[][] f, int numR, int numC, int i, int j) throws IOException {
         BufferedImage im = new BufferedImage(image.getWidth(), image.getHeight(), image.getType());
         int r, g, b;
         Color c;
