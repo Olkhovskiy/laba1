@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
  */
 public class Cod extends JFrame {
 
+    private static double[][] table;
     JLabel label1, label2, label3, label4, label5;
 
 
@@ -97,58 +98,56 @@ public class Cod extends JFrame {
             newleft = oldleft + (oldright - oldleft) * (alpha.indexOf(word2[i])) / length;
             newright = oldleft + (oldright - oldleft) * (alpha.indexOf(word2[i]) + 1) / length;
             System.out.println("left: " + newleft + "  right:  " + newright);
+            left = newleft;
+            right = newright;
         }
+
+
+        float avg = (float) (left+((right - left) * 1.0) / 2);
+        System.out.println("avg "+avg);
+        textField3.setText(String.valueOf(avg));
+        System.out.println("left " + left + " right  " + right);
         //System.out.println(alpha2[0]);
         //System.out.println(alpha2[1]);
-       // System.out.println(alpha2[2]);
-        float[][] table = new float[alpha.length()][2];
-        System.out.println(alpha.length());
+        // System.out.println(alpha2[2]);
+        table = new double[alpha.length()][2];
+      //  System.out.println(alpha.length());
         for (int i = 0; i < length; i++) {
-            table[i][0] = (float) ((i*1.0)/ length);
-            table[i][1] = (float)(i+1) / length;
+            table[i][0] = (float) ((i * 1.0) / length);
+            table[i][1] = (float) (i + 1) / length;
             //System.out.println(i*1.0/length+ " fefewfwfeefweffew!!!!!!");
             System.out.println("Table left: " + table[i][0] + "  right: " + table[i][1]);
         }
         System.out.println("rfefewfewewfef");
-        left = newleft;
-        right = newright;
-        textField3.setText(String.valueOf((right - left) / 2));
+
     }
 
     public static void decoding() {
-        float oldleft = 0, oldright = 1;
-        float newleft = 0, newright = 1;
-        float avg = (right - left) / 2;
+        //float oldleft = 0, oldright = 1;
+        //float newleft = 0, newright = 1;
+       // double avg = (right - left) / 2;
         String slovo = "";
         String[] alpha2 = alpha.split("");
-        int i = 0;
-        boolean flag = true;
-        float krit1 = left + (right - left) * (alpha.indexOf(alpha2[i])) / alpha.length();
-        float krit2 = left + (right - left) * (alpha.indexOf(alpha2[i]) + 1) / alpha.length();
-        float codeN;
-        do {
+        //int i = 0;
+       // boolean flag = true;
 
-            if ((avg > left) && (avg < right)) {
-                slovo = slovo + alpha2[i];
+        String cod = textField3.getText();
+        double avg = Double.parseDouble(cod);
+        System.out.println(avg+ " !!!!!!");
 
-                break;
+        while (1-((1-avg)*2)*alpha.length()-1/alpha.length() < table[alpha.length()-1][0]) {
+
+            for (int j = 0; j < alpha.length(); j++) {
+                System.out.println(avg+ " 2342342342   ");
+                if ((avg > table[j][0]) & (avg < table[j][1])) {
+                    slovo = slovo + alpha.split("")[j];
+
+                    avg = (avg - table[j][0]) / (table[j][1] - table[j][0]);
+                    System.out.println(avg + "  avg ");
+                    System.out.println("slovo    "+slovo);
+                }
             }
-            // for (i = 0; i < alpha.length(); i++) {
-            //oldleft = newleft;
-            // oldright = newright;
-            // System.out.println(i);
-            //newleft = oldleft + (oldright - oldleft) * (alpha.indexOf(alpha2[i])) / alpha.length();
-            //newright = oldleft + (oldright - oldleft) * (alpha.indexOf(alpha2[i]) + 1) / alpha.length();
-            codeN = (avg - left) / (right - left);
-            System.out.println(codeN);
+        }
 
-            avg = (newright - newleft) / 2;
-
-            if ((avg > krit1) && (avg < krit2)) {
-                flag = false;
-            }
-            // }
-            System.out.println(slovo);
-        } while (false);
     }
 }
