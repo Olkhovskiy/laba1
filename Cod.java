@@ -134,20 +134,31 @@ public class Cod extends JFrame {
         String cod = textField3.getText();
         double avg = Double.parseDouble(cod);
         System.out.println(avg+ " !!!!!!");
-
+        //boolean flag = false;
         while (avg < table[alpha.length()-1][0]) {
+            System.out.println("avg  "+avg+ " table  "+table[alpha.length()-1][0]);
 
+            System.out.println("popo");
             for (int j = 0; j < alpha.length(); j++) {
+               // flag = false;
                 System.out.println(avg+ " 2342342342   ");
-                if ((avg > table[j][0]) & (avg < table[j][1])) {
+                System.out.println(table[alpha.length()-1][0]);
+                if ((avg > table[j][0]) & (avg < table[j][1])& (avg < table[alpha.length()-1][0])) {
                     slovo = slovo + alpha.split("")[j];
 
                     avg = (avg - table[j][0]) / (table[j][1] - table[j][0]);
+                    System.out.println("111");
                     System.out.println(avg + "  avg ");
+                    System.out.println(table[alpha.length()-1][0]);
                     System.out.println("slovo    "+slovo);
+                    System.out.println("222");
+                   // flag = true;
                 }
+               // if (flag) break;
             }
         }
+        slovo= slovo + alpha.split("")[alpha.length()-1];
+        System.out.println("answer: "+ slovo);
 
     }
 }
