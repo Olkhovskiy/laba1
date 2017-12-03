@@ -135,7 +135,7 @@ public class Cod extends JFrame {
         double avg = Double.parseDouble(cod);
         System.out.println(avg+ " !!!!!!");
 
-        while (1-((1-avg)*2)*alpha.length()-1/alpha.length() < table[alpha.length()-1][0]) {
+        while (avg < table[alpha.length()-1][0]) {
 
             for (int j = 0; j < alpha.length(); j++) {
                 System.out.println(avg+ " 2342342342   ");
