@@ -13,7 +13,7 @@ public class Cod extends JFrame {
 
 
     static JTextField textField1, textField2, textField3, textField4, textField5;
-    static float left, right;
+    static double left, right;
     static String alpha;
 
 
@@ -81,84 +81,64 @@ public class Cod extends JFrame {
 
     public static void coding() {
         alpha = getTextField1().getText();
-        System.out.println(alpha);
-        String[] alpha2 = alpha.split("");
+        //System.out.println(alpha);
         String word = getTextField2().getText();
         String[] word2 = word.split("");
         int length = alpha.length();   // длина словаря
         System.out.println(length);
-        //float probability = 0;
-        float oldleft = 0, oldright = 1;
-        float newleft = 0, newright = 1;
+
+        double oldleft = 0, oldright = 1;
+        double newleft = 0, newright = 1;
 
         for (int i = 0; i < word.length(); i++) {
             oldleft = newleft;
             oldright = newright;
-            // System.out.println(i);
+
             newleft = oldleft + (oldright - oldleft) * (alpha.indexOf(word2[i])) / length;
             newright = oldleft + (oldright - oldleft) * (alpha.indexOf(word2[i]) + 1) / length;
-            System.out.println("left: " + newleft + "  right:  " + newright);
+            //System.out.println("left: " + newleft + "  right:  " + newright);
             left = newleft;
             right = newright;
         }
 
 
-        float avg = (float) (left+((right - left) * 1.0) / 2);
-        System.out.println("avg "+avg);
+        double avg =  (left + ((right - left) * 1.0) / 2);
+
         textField3.setText(String.valueOf(avg));
-        System.out.println("left " + left + " right  " + right);
-        //System.out.println(alpha2[0]);
-        //System.out.println(alpha2[1]);
-        // System.out.println(alpha2[2]);
+
         table = new double[alpha.length()][2];
-      //  System.out.println(alpha.length());
+
         for (int i = 0; i < length; i++) {
-            table[i][0] = (float) ((i * 1.0) / length);
-            table[i][1] = (float) (i + 1) / length;
-            //System.out.println(i*1.0/length+ " fefewfwfeefweffew!!!!!!");
-            System.out.println("Table left: " + table[i][0] + "  right: " + table[i][1]);
+            table[i][0] =  ((i * 1.0) / length);
+            table[i][1] =  (i * 1.0 + 1) / length;
+
+            System.out.println("Table left: " + table[i][0] + "  right: " + table[i][1] + "  word: " + alpha.split("")[i]);
         }
-        System.out.println("rfefewfewewfef");
+
 
     }
 
     public static void decoding() {
-        //float oldleft = 0, oldright = 1;
-        //float newleft = 0, newright = 1;
-       // double avg = (right - left) / 2;
-        String slovo = "";
-        String[] alpha2 = alpha.split("");
-        //int i = 0;
-       // boolean flag = true;
 
+        String slovo = "";
         String cod = textField3.getText();
         double avg = Double.parseDouble(cod);
-        System.out.println(avg+ " !!!!!!");
-        //boolean flag = false;
-        while (avg < table[alpha.length()-1][0]) {
-            System.out.println("avg  "+avg+ " table  "+table[alpha.length()-1][0]);
 
-            System.out.println("popo");
+        textField4.setText(cod);
+        while (avg < (table[alpha.length() - 1][0])) {
             for (int j = 0; j < alpha.length(); j++) {
-               // flag = false;
-                System.out.println(avg+ " 2342342342   ");
-                System.out.println(table[alpha.length()-1][0]);
-                if ((avg > table[j][0]) & (avg < table[j][1])& (avg < table[alpha.length()-1][0])) {
+                if ((avg > table[j][0]) & (avg < table[j][1]) & (avg < table[alpha.length() - 1][0])) {
+                    System.out.println("avg " + avg + " table " + table[alpha.length() - 1][0] + " left " + table[j][0] + " right " + table[j][1]);
                     slovo = slovo + alpha.split("")[j];
-
+                    System.out.println(slovo);
                     avg = (avg - table[j][0]) / (table[j][1] - table[j][0]);
-                    System.out.println("111");
-                    System.out.println(avg + "  avg ");
-                    System.out.println(table[alpha.length()-1][0]);
-                    System.out.println("slovo    "+slovo);
-                    System.out.println("222");
-                   // flag = true;
                 }
-               // if (flag) break;
             }
         }
-        slovo= slovo + alpha.split("")[alpha.length()-1];
-        System.out.println("answer: "+ slovo);
+        slovo = slovo + alpha.split("")[alpha.length() - 1];
+        System.out.println("answer: " + slovo);
+
+        textField5.setText(slovo);
 
     }
 }
