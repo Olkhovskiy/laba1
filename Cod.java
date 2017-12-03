@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 public class Cod extends JFrame {
 
     JLabel label1, label2, label3, label4, label5;
-
+    static float[][] table;
 
     static JTextField textField1, textField2, textField3, textField4, textField5;
     static float left, right;
@@ -47,7 +47,7 @@ public class Cod extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 coding();
-                decoding();
+               // decoding();
             }
         });
         panel.add(button, new GridBagConstraints(0, 10, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
@@ -101,7 +101,7 @@ public class Cod extends JFrame {
         //System.out.println(alpha2[0]);
         //System.out.println(alpha2[1]);
        // System.out.println(alpha2[2]);
-        float[][] table = new float[alpha.length()][2];
+        table = new float[alpha.length()][2];
         System.out.println(alpha.length());
         for (int i = 0; i < length; i++) {
             table[i][0] = (float) ((i*1.0)/ length);
@@ -119,36 +119,53 @@ public class Cod extends JFrame {
         float oldleft = 0, oldright = 1;
         float newleft = 0, newright = 1;
         float avg = (right - left) / 2;
+        System.out.println();
         String slovo = "";
-        String[] alpha2 = alpha.split("");
-        int i = 0;
-        boolean flag = true;
-        float krit1 = left + (right - left) * (alpha.indexOf(alpha2[i])) / alpha.length();
-        float krit2 = left + (right - left) * (alpha.indexOf(alpha2[i]) + 1) / alpha.length();
-        float codeN;
-        do {
+        String cod = textField3.getText();
+        System.out.println(cod+ "  cod");
+      while (avg<0.9){
 
-            if ((avg > left) && (avg < right)) {
-                slovo = slovo + alpha2[i];
-
-                break;
+            for (int j=0;j< alpha.length();j++){
+                if((avg>table[j][0])&(avg<table[j][1])){
+                    slovo =slovo+alpha.split("")[j];
+                    System.out.println(avg);
+                    System.out.println(alpha.split("")[j]+"   11111");
+                    avg=(avg-table[j][0])/(table[j][1]-table[j][0]);
+                    System.out.println(avg + "  avg ");
+                }
             }
-            // for (i = 0; i < alpha.length(); i++) {
-            //oldleft = newleft;
-            // oldright = newright;
-            // System.out.println(i);
-            //newleft = oldleft + (oldright - oldleft) * (alpha.indexOf(alpha2[i])) / alpha.length();
-            //newright = oldleft + (oldright - oldleft) * (alpha.indexOf(alpha2[i]) + 1) / alpha.length();
-            codeN = (avg - left) / (right - left);
-            System.out.println(codeN);
-
-            avg = (newright - newleft) / 2;
-
-            if ((avg > krit1) && (avg < krit2)) {
-                flag = false;
-            }
-            // }
-            System.out.println(slovo);
-        } while (false);
+        }
+//
+//        String[] alpha2 = alpha.split("");
+//        int i = 0;
+//        boolean flag = true;
+//        float krit1 = left + (right - left) * (alpha.indexOf(alpha2[i])) / alpha.length();
+//        float krit2 = left + (right - left) * (alpha.indexOf(alpha2[i]) + 1) / alpha.length();
+//        float codeN;
+//
+//        do {
+//
+//            if ((avg > left) && (avg < right)) {
+//                slovo = slovo + alpha2[i];
+//
+//                break;
+//            }
+//            // for (i = 0; i < alpha.length(); i++) {
+//            //oldleft = newleft;
+//            // oldright = newright;
+//            // System.out.println(i);
+//            //newleft = oldleft + (oldright - oldleft) * (alpha.indexOf(alpha2[i])) / alpha.length();
+//            //newright = oldleft + (oldright - oldleft) * (alpha.indexOf(alpha2[i]) + 1) / alpha.length();
+//            codeN = (avg - left) / (right - left);
+//            System.out.println(codeN);
+//
+//            avg = (newright - newleft) / 2;
+//
+//            if ((avg > krit1) && (avg < krit2)) {
+//                flag = false;
+//            }
+//            // }
+//            System.out.println(slovo);
+//        } while (false);
     }
 }
