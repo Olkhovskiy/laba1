@@ -11,7 +11,6 @@ public class Cod extends JFrame {
     private static double[][] table;
     JLabel label1, label2, label3, label4, label5;
 
-
     static JTextField textField1, textField2, textField3, textField4, textField5;
     static double left, right;
     static String alpha;
@@ -102,20 +101,18 @@ public class Cod extends JFrame {
         }
 
 
-        double avg =  (left + ((right - left) * 1.0) / 2);
+        double avg = (left + ((right - left) * 1.0) / 2);
 
         textField3.setText(String.valueOf(avg));
 
         table = new double[alpha.length()][2];
 
         for (int i = 0; i < length; i++) {
-            table[i][0] =  ((i * 1.0) / length);
-            table[i][1] =  (i * 1.0 + 1) / length;
+            table[i][0] = ((i * 1.0) / length);
+            table[i][1] = (i * 1.0 + 1) / length;
 
             System.out.println("Table left: " + table[i][0] + "  right: " + table[i][1] + "  word: " + alpha.split("")[i]);
         }
-
-
     }
 
     public static void decoding() {
@@ -137,7 +134,6 @@ public class Cod extends JFrame {
         }
         slovo = slovo + alpha.split("")[alpha.length() - 1];
         System.out.println("answer: " + slovo);
-
         textField5.setText(slovo);
 
     }

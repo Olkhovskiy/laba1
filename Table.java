@@ -108,7 +108,6 @@ public class Table extends JFrame {
             }
         }
 
-
         //  JFrame frame = new JFrame();
         // frame.setSize(1200,700);
         File out = new File("matrix.png");
@@ -125,11 +124,9 @@ public class Table extends JFrame {
         //frame.add(panel);
         //  frame.setVisible(true);
 
-
         ImageIO.write(im, "jpg", out);
         Histogram frame = new Histogram();
         frame.setFile(out);
-
 
         // System.out.println(outputFile.toString());
         frame.setOutputFile(out);

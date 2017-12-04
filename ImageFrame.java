@@ -57,8 +57,26 @@ public class ImageFrame extends JFrame {
                 }
             }
         });
+
+        JButton button2 = new JButton("Бинаризация");
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    BufferedImage in = ImageIO.read(file);
+                    Binar frame = new Binar(file,in);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
+            }
+        });
         panel.add(BorderLayout.CENTER, imageComponent);
-        panel.add(BorderLayout.SOUTH, button);
+        JPanel panel2 = new JPanel();
+        panel2.setLayout(new BorderLayout());
+        panel2.add(BorderLayout.NORTH, button);
+        panel2.add(BorderLayout.SOUTH, button2);
+        panel.add(BorderLayout.SOUTH, panel2);
         add(panel);
     }
 
