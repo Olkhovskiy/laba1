@@ -63,8 +63,11 @@ public class ImageFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
+//
+                    int inten = Integer.parseInt(JOptionPane.showInputDialog("Введите интенсивность"));
                     BufferedImage in = ImageIO.read(file);
-                    Binar frame = new Binar(file,in);
+                    Binar frame = new Binar(file, in, inten);
+
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
