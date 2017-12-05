@@ -8,7 +8,8 @@ import java.io.File;
  */
 public class Binar extends JFrame {
     Binar(File file, BufferedImage in, int inten) {
-        ImageComponent component = new ImageComponent(file, in);
+        setTitle("Бинаризация");
+       // ImageComponent component = new ImageComponent(file, in);
         int width = in.getWidth();
         int height = in.getHeight();
         int gray;
@@ -25,10 +26,18 @@ public class Binar extends JFrame {
         ImageComponent image1 = new ImageComponent(file, in);
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
+        GridBagLayout gbl = new GridBagLayout();
+       // panel.setLayout(gbl);
+       // panel.add(image1, new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.CENTER,
+              //  GridBagConstraints.BOTH, new Insets(5, 5, 5, 5), 10, 10));
         panel.add(BorderLayout.CENTER, image1);
+        System.out.println("2");
+        Table2 table2 = new Table2(file);
+        System.out.println("7");
         add(panel);
-        setSize(600,400);
+        setSize(600, 400);
         setVisible(true);
-
     }
+
+
 }
