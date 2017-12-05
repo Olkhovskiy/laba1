@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
@@ -31,9 +33,28 @@ public class Binar extends JFrame {
        // panel.add(image1, new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.CENTER,
               //  GridBagConstraints.BOTH, new Insets(5, 5, 5, 5), 10, 10));
         panel.add(BorderLayout.CENTER, image1);
-        System.out.println("2");
-        Table2 table2 = new Table2(file);
-        System.out.println("7");
+        JButton button = new JButton("Задать структурирующий элемент");
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("2");
+                Table2 table2 = new Table2(file);
+                System.out.println("7");
+            }
+        });
+        JButton button1 = new JButton("Дилатация");
+        JButton button2 = new JButton("Эрозия");
+        JButton button3 = new JButton("Замыкание");
+        JButton button4 = new JButton("Размыкание");
+        JPanel panel2 = new JPanel();
+        panel2.setLayout(new FlowLayout());
+        panel2.add(button);
+        panel2.add(button1);
+        panel2.add(button2);
+        panel2.add(button3);
+        panel2.add(button4);
+        panel.add(BorderLayout.SOUTH,panel2);
+        
         add(panel);
         setSize(600, 400);
         setVisible(true);

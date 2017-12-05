@@ -12,7 +12,7 @@ public class Table2 extends JFrame {
 
     Table2(File file) {
         setLayout(new BorderLayout());
-        setSize(1200, 700);
+        setSize(300, 200);
         setTitle("Размеры структурирующего элемента");
         GridBagLayout gbl = new GridBagLayout();
         // setLayout(gbl);
@@ -49,9 +49,5 @@ public class Table2 extends JFrame {
                 GridBagConstraints.BOTH, new Insets(20, 0, 0, 0), 10, 10));
         add(panel);
         setVisible(true);
-
-
     }
-
-
 }
