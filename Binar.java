@@ -54,7 +54,7 @@ public class Binar extends JFrame {
         panel2.add(button3);
         panel2.add(button4);
         panel.add(BorderLayout.SOUTH,panel2);
-        
+
         add(panel);
         setSize(600, 400);
         setVisible(true);
