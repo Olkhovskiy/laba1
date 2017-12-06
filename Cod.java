@@ -132,6 +132,8 @@ public class Cod extends JFrame {
                 else System.out.println("tratata");
             }
 
+            
+
             if (!flag) {
                 JOptionPane.showMessageDialog(null,"Отсутствует буква в алфавите");
                 throw new Exception("ошибка");
