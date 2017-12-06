@@ -11,7 +11,7 @@ import java.io.IOException;
  * Created by Васили on 05.12.2017.
  */
 public class StructurElement extends JFrame {
-
+static  float[][] f;
     StructurElement(File file, int numR, int numC) {
         setTitle("ololo");
         System.out.println("4");
@@ -24,13 +24,13 @@ public class StructurElement extends JFrame {
 
         Box content = new Box(BoxLayout.Y_AXIS);
         JPanel panel = new JPanel();
-        float[][] f = new float[numR][numC];
+        f = new float[numR][numC];
         JButton button = new JButton("ok");
-        float[][] matrix = new float[][]{
-                {-1, 0, 1},
-                {-2, 0, 2},
-                {-1, 0, 1}
-        };
+//        float[][] matrix = new float[][]{
+//                {-1, 0, 1},
+//                {-2, 0, 2},
+//                {-1, 0, 1}
+//        };
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

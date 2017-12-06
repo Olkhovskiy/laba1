@@ -23,7 +23,7 @@ public class Filter extends JFrame {
         JTextField centerX = new JTextField(3);
         centerX.setSize(10, 5);
         JTextField centerY = new JTextField(3);
-        filterY.setSize(10, 5);
+        centerY.setSize(10, 5);
         JButton button = new JButton("OK");
         button.addActionListener(new ActionListener() {
             @Override

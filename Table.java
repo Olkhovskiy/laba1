@@ -24,11 +24,11 @@ public class Table extends JFrame {
         JPanel panel = new JPanel();
         float[][] f = new float[numR][numC];
         JButton button = new JButton("ok");
-        float[][] matrix = new float[][]{
-                {-1, 0, 1},
-                {-2, 0, 2},
-                {-1, 0, 1}
-        };
+//        float[][] matrix = new float[][]{
+//                {-1, 0, 1},
+//                {-2, 0, 2},
+//                {-1, 0, 1}
+//        };
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -9,9 +9,9 @@ import java.awt.event.ActionListener;
 public class Cod extends JFrame {
 
     private static double[][] table;
-    JLabel label1, label2, label3, label4, label5;
+    JLabel label1, label2, label3, label4, label5, label6, label7;
 
-    static JTextField textField1, textField2, textField3, textField4, textField5;
+    static JTextField textField1, textField2, textField3, textField4, textField5, textField6, textField7;
     static double left, right;
     static String alpha;
 
@@ -23,6 +23,10 @@ public class Cod extends JFrame {
         textField2 = new JTextField();
         label3 = new JLabel("Результат кодировки");
         textField3 = new JTextField();
+        label6 = new JLabel("левая граница");
+        label7 = new JLabel("правая граница");
+        textField6 = new JTextField();
+        textField7 = new JTextField();
         label4 = new JLabel("Введите цифровую последовательность для декодирования");
         textField4 = new JTextField();
         label5 = new JLabel("Результат декодирования");
@@ -37,20 +41,38 @@ public class Cod extends JFrame {
 
         panel.add(label3, new GridBagConstraints(0, 4, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
         panel.add(textField3, new GridBagConstraints(0, 5, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
-        panel.add(label4, new GridBagConstraints(0, 6, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
-        panel.add(textField4, new GridBagConstraints(0, 7, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
-        panel.add(label5, new GridBagConstraints(0, 8, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
-        panel.add(textField5, new GridBagConstraints(0, 9, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
+        panel.add(label6, new GridBagConstraints(0, 6, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
+        panel.add(textField6, new GridBagConstraints(0, 7, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
+        panel.add(label7, new GridBagConstraints(0, 8, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
+        panel.add(textField7, new GridBagConstraints(0, 9, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
+
+        panel.add(label4, new GridBagConstraints(0, 10, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
+        panel.add(textField4, new GridBagConstraints(0, 11, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
+        panel.add(label5, new GridBagConstraints(0, 12, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
+        panel.add(textField5, new GridBagConstraints(0, 13, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
 
 
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                coding();
+                try {
+                    coding();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                    return;
+                }
+
+            }
+        });
+        JButton button1 = new JButton("Декодинг");
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 decoding();
             }
         });
-        panel.add(button, new GridBagConstraints(0, 10, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
+        panel.add(button, new GridBagConstraints(0, 14, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
+        panel.add(button1, new GridBagConstraints(0, 15, 1, 1, 0, 0.2, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
 
         add(panel);
         setSize(600, 400);
@@ -78,18 +100,21 @@ public class Cod extends JFrame {
         return textField5;
     }
 
-    public static void coding() {
+    public static void coding() throws Exception {
         alpha = getTextField1().getText();
         //System.out.println(alpha);
         String word = getTextField2().getText();
         String[] word2 = word.split("");
         int length = alpha.length();   // длина словаря
         System.out.println(length);
+        System.out.println(word.length());
 
         double oldleft = 0, oldright = 1;
         double newleft = 0, newright = 1;
 
+
         for (int i = 0; i < word.length(); i++) {
+            boolean flag = false;
             oldleft = newleft;
             oldright = newright;
 
@@ -98,8 +123,22 @@ public class Cod extends JFrame {
             //System.out.println("left: " + newleft + "  right:  " + newright);
             left = newleft;
             right = newright;
-        }
+            for (int j = 0; j < alpha.length(); j++) {
+                if ((alpha.split("")[j]).equals (word2[i])) {
+                        flag =true;
+                    System.out.println(alpha.split("")[j]+ "   "+ word2[i]+ "   "+ flag);
+                    break;
+                }
+                else System.out.println("tratata");
+            }
 
+            if (!flag) {
+                JOptionPane.showMessageDialog(null,"Отсутствует буква в алфавите");
+                throw new Exception("ошибка");
+            }
+        }
+        textField6.setText(String.valueOf(left));
+        textField7.setText(String.valueOf(right));
 
         double avg = (left + ((right - left) * 1.0) / 2);
 
@@ -118,7 +157,7 @@ public class Cod extends JFrame {
     public static void decoding() {
 
         String slovo = "";
-        String cod = textField3.getText();
+        String cod = textField4.getText();
         double avg = Double.parseDouble(cod);
 
         textField4.setText(cod);
