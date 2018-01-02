@@ -87,7 +87,6 @@ public class Table extends JFrame {
                     for (int w = 0; w < numR; w++) {
                         int y = (h + l + w - i + 1) % h;
                         int x = (wi + k + q - j + 1) % wi;
-                        //c = new Color(image.getRGB(2*(k+q-i+1)/wi,2*(l+w-j+1)/h));
                         c = new Color(image.getRGB(x, y));
                         r = r + (int) (c.getRed() * f[w][q]);
                         g = g + (int) (c.getGreen() * f[w][q]);
@@ -119,19 +118,24 @@ public class Table extends JFrame {
         }
         System.out.println("fefe");
         JPanel panel = new JPanel();
-        ImageComponent image1 = new ImageComponent(out, im);
-        panel.add(BorderLayout.CENTER, image1);
+        //ImageComponent image1 = new ImageComponent(out, im);
+       // panel.add(BorderLayout.CENTER, image1);
         //frame.add(panel);
         //  frame.setVisible(true);
 
         ImageIO.write(im, "jpg", out);
-        Histogram frame = new Histogram();
-        frame.setFile(out);
+        JFrame frame2 = new JFrame();
+        frame2.setSize(1200,700);
+        ImageComponent image1 = new ImageComponent(out, im);
+        frame2.add(image1);
+        frame2.setVisible(true);
+       // Histogram frame = new Histogram();
+      //  frame.setFile(out);
 
         // System.out.println(outputFile.toString());
-        frame.setOutputFile(out);
-        frame.create("eq" + out.getName());
-        frame.setVisible(true);
+     //  frame.setOutputFile(out);
+       // frame.create("eq" + out.getName());
+       // frame.setVisible(true);
     }
 
 }

@@ -90,6 +90,13 @@ public class MainMenu extends JFrame {
         });
 
         JButton cod = new JButton("Кодировка");
+        JButton filter = new JButton("Матричный фильтр");
+        filter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Filter filter = new Filter(file);
+            }
+        });
 
         cod.addActionListener(new ActionListener() {
             @Override
@@ -100,6 +107,8 @@ public class MainMenu extends JFrame {
 
         panelButton.add(button);
         panelButton.add(cod);
+        panelButton.add(filter);
+
         res.add(panelButton, new GridBagConstraints(0, 2, 1, 1, 1, 1, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new Insets(0, 0, 0, 0), 0, 0));
 
         frame.setVisible(true);

@@ -12,7 +12,7 @@ public class Table2 extends JFrame {
     static int centX, centY;
     static float[][] f;
 
-    Table2(File file) {
+    Table2() {
         setLayout(new BorderLayout());
         setSize(400, 300);
         setTitle("Размеры структурирующего элемента");
@@ -37,10 +37,10 @@ public class Table2 extends JFrame {
                 x = Integer.parseInt(filterX.getText());
                 y = Integer.parseInt(filterY.getText());
                 System.out.println("3");
-                StructurElement structurElement = new StructurElement(file, x, y);
+                StructurElement structurElement = new StructurElement(x, y);
                 f= structurElement.f;
-                centX = Integer.parseInt(centerX.getText());
-                centY = Integer.parseInt(centerY.getText());
+                centX = Integer.parseInt(centerX.getText())-1;
+                centY = Integer.parseInt(centerY.getText())-1;
                 System.out.println("6");
                 dispose();
 

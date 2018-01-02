@@ -187,7 +187,7 @@ public class Histogram extends JFrame {
         JPanel panelDown = new JPanel();
         panelDown.setLayout(gbl);
         panelDown.add(button1, new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(5, 5, 5, 5), 10, 10));
-        panelDown.add(filterButton, new GridBagConstraints(1, 0, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(5, 5, 5, 5), 10, 10));
+       // panelDown.add(filterButton, new GridBagConstraints(1, 0, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(5, 5, 5, 5), 10, 10));
         panelDown.add(button2, (new GridBagConstraints(2, 0, 1, 1, 0, 0, GridBagConstraints.CENTER, GridBagConstraints.BOTH, new Insets(5, 5, 5, 5), 10, 10)));
 
         panel.add(BorderLayout.SOUTH, panelDown);

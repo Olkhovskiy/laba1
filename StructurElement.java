@@ -12,7 +12,7 @@ import java.io.IOException;
  */
 public class StructurElement extends JFrame {
 static  float[][] f;
-    StructurElement(File file, int numR, int numC) {
+    StructurElement(int numR, int numC) {
         setTitle("ololo");
         System.out.println("4");
         JTable table = new JTable(numR, numC);
